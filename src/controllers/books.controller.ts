@@ -7,13 +7,19 @@ import booksServices from "@/services/books.services";
 async function registerBook(req: Request, res: Response) {
     try {
         const newBook = req.body as CreateBook;
-        booksServices.existingBook(newBook)
+        await booksServices.existingBook(newBook);
 
-        res.status(httpStatus.CREATED).send(`Registered book!`)
+        res.status(httpStatus.CREATED).send("Registered book!");
     } catch (err) {
-        res.status(500).send(err.message)
+        if (err.type === "bookAlreadyExists") {
+            res.status(httpStatus.CONFLICT).send(err.message);
+        } else {
+            res.status(httpStatus.INTERNAL_SERVER_ERROR).send("Failed to register book");
+            // FIXME caindo no 500 mesmo no caso que o livro já existe
+        }
     }
-};
+}
+
 
 async function getBooks(req: Request, res: Response) {
     try {
