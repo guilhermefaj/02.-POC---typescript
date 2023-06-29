@@ -1,10 +1,11 @@
-import { getBooks, registerBook } from "@/controllers/books.controller";
+import booksController from "@/controllers/books.controller";
 import { Router } from "express";
 
 
 const bookRouter = Router();
 
-bookRouter.get("/books", getBooks);
-bookRouter.post("/books", registerBook);
+bookRouter.get("/books", booksController.getBooks);
+bookRouter.get("/book", booksController.getBook);
+bookRouter.post("/book", booksController.registerBook);
 
 export default bookRouter;
