@@ -1,0 +1,25 @@
+// Crie um db books por meio da query
+
+CREATE TABLE books(
+    id SERIAL PRIMARY KEY,
+    title VARCHAR(255),
+    author VARCHAR(255),
+    release_date DATE,
+    price DECIMAL(10, 2)
+);
+
+
+// Popule o banco com os dados abaixo
+
+INSERT INTO books(title, author, release_date, price)
+VALUES
+    ('The Great Gatsby', 'F. Scott Fitzgerald', '1925-04-10', 12.99),
+    ('To Kill a Mockingbird', 'Harper Lee', '1960-07-11', 9.99),
+    ('Pride and Prejudice', 'Jane Austen', '1813-01-28', 7.99),
+    ('1984', 'George Orwell', '1949-06-08', 11.99),
+    ('The Catcher in the Rye', 'J.D. Salinger', '1951-07-16', 10.99),
+    ('The Lord of the Rings', 'J.R.R. Tolkien', '1954-07-29', 24.99),
+    ('To the Lighthouse', 'Virginia Woolf', '1927-05-05', 8.99),
+    ('Brave New World', 'Aldous Huxley', '1932-01-01', 9.99),
+    ('Moby-Dick', 'Herman Melville', '1851-10-18', 13.99),
+    ('The Hobbit', 'J.R.R. Tolkien', '1937-09-21', 15.99);
